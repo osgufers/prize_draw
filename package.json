@@ -1,0 +1,19 @@
+{
+  "name": "google-form",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "dependencies": {},
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "tailwind-scrollbar": "^1.3.1",
+    "tailwindcss": "^3.1.7"
+  },
+  "scripts": {
+    "dev": "live-server --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
