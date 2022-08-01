@@ -11,6 +11,7 @@ const SCOPES = `https://www.googleapis.com/auth/forms.body.readonly https://www.
 let tokenClient
 let gapiInited = false
 let gisInited = false
+let responses = [];
 
 let authorizeButton = document.getElementById('authorize_button');
 let signoutButton = document.getElementById('signout_button');
@@ -19,6 +20,7 @@ let formId = document.getElementById('form-id');
 let loadingButton = document.getElementById('loading_button');
 let submitButton = document.getElementById('submit-form');
 let signinButton = document.getElementById('signin_button');
+let modal = document.getElementById('modal');
 
 /** Hidde Elements */
 form.classList.add('hidden');
@@ -149,7 +151,9 @@ async function getFormResponsesById(formId) {
     setLoading(false);
     return
   }
-  console.log(response.result.responses)
+
+  responses = response.result.responses
+  modal.classList.remove('hidden');
 }
 
 function setLoading(loading) {
@@ -167,7 +171,7 @@ function setLoading(loading) {
 /**
  * Show notification alert.
  */
-function addNotification(message, colors) {
+function addNotification(message, background) {
   Toastify({
     text: message,
     duration: 3000,
@@ -177,7 +181,186 @@ function addNotification(message, colors) {
     position: "right", // `left`, `center` or `right`
     stopOnFocus: true, // Prevents dismissing of toast on hover
     style: {
-      background: colors,
+      background: background,
     }
   }).showToast();
+}
+
+/** Close Modal */
+function handleCloseModal() {
+  modal.classList.add('hidden');
+}
+
+responses = [
+  {
+    "responseId": "ACYDBNhxm2qXHc8i4gHQuAc-KWGF-GbOB2KZxfliLi66-dbzICd8TdSfviPcSnkyZE1-2vw",
+    "createTime": "2022-08-01T20:23:28.870Z",
+    "lastSubmittedTime": "2022-08-01T20:23:28.870191Z",
+    "answers": {
+      "1fbbe6ef": {
+        "questionId": "1fbbe6ef",
+        "textAnswers": {
+          "answers": [
+            {
+              "value": "jonatas@gmail.com"
+            }
+          ]
+        }
+      },
+      "7835c942": {
+        "questionId": "7835c942",
+        "textAnswers": {
+          "answers": [
+            {
+              "value": "Jonatas Maia"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "responseId": "ACYDBNjr-lJ5s_nBj3uCVGxj4AmjfryGdPKE4Buwd4mSTsBlF3sHEisXyWS0t0oysKVNLxU",
+    "createTime": "2022-08-01T20:23:41.384Z",
+    "lastSubmittedTime": "2022-08-01T20:23:41.384703Z",
+    "answers": {
+      "1fbbe6ef": {
+        "questionId": "1fbbe6ef",
+        "textAnswers": {
+          "answers": [
+            {
+              "value": "natalia@gmail.com"
+            }
+          ]
+        }
+      },
+      "7835c942": {
+        "questionId": "7835c942",
+        "textAnswers": {
+          "answers": [
+            {
+              "value": "Natalia Santos"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "responseId": "ACYDBNjz_2wxbrsbHziAsx_DEVncYO6j7zDzoVB8K1Pf9LVgX7-HeiMzCVy1p_ddI02Tv3o",
+    "createTime": "2022-08-01T20:22:42.498Z",
+    "lastSubmittedTime": "2022-08-01T20:22:42.498351Z",
+    "answers": {
+      "1fbbe6ef": {
+        "questionId": "1fbbe6ef",
+        "textAnswers": {
+          "answers": [
+            {
+              "value": "luiza@gmail.com"
+            }
+          ]
+        }
+      },
+      "7835c942": {
+        "questionId": "7835c942",
+        "textAnswers": {
+          "answers": [
+            {
+              "value": "Luiza Santos"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "responseId": "ACYDBNip7TZP6oJ0y6ZH06i7nRcEfnoU7BlOeiOF4DMJSAoKCZU8xzYbG3wDrLyLY1VmU9A",
+    "createTime": "2022-08-01T20:21:52.249Z",
+    "lastSubmittedTime": "2022-08-01T20:21:52.249663Z",
+    "answers": {
+      "1fbbe6ef": {
+        "questionId": "1fbbe6ef",
+        "textAnswers": {
+          "answers": [
+            {
+              "value": "rodrigo@gmail.com"
+            }
+          ]
+        }
+      },
+      "7835c942": {
+        "questionId": "7835c942",
+        "textAnswers": {
+          "answers": [
+            {
+              "value": "Rodrigo Muniz"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "responseId": "ACYDBNgOItmvHkrclw6hl_Mcf1knh-aDiy1j4kvkJVhCllzUopK4a0nZvMFq0Gz211KaTlI",
+    "createTime": "2022-08-01T20:22:22.476Z",
+    "lastSubmittedTime": "2022-08-01T20:22:22.476239Z",
+    "answers": {
+      "1fbbe6ef": {
+        "questionId": "1fbbe6ef",
+        "textAnswers": {
+          "answers": [
+            {
+              "value": "junior@gmail.com"
+            }
+          ]
+        }
+      },
+      "7835c942": {
+        "questionId": "7835c942",
+        "textAnswers": {
+          "answers": [
+            {
+              "value": "Junior Santos"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "responseId": "ACYDBNhZD86GsrpHsGGGllye7Ue1IlQ8SXi9zZgtLK5ojLwvRQkXn4WOCV2w5SGN470GUew",
+    "createTime": "2022-08-01T20:22:03.242Z",
+    "lastSubmittedTime": "2022-08-01T20:22:03.242319Z",
+    "answers": {
+      "1fbbe6ef": {
+        "questionId": "1fbbe6ef",
+        "textAnswers": {
+          "answers": [
+            {
+              "value": "thiago@gmail.com"
+            }
+          ]
+        }
+      },
+      "7835c942": {
+        "questionId": "7835c942",
+        "textAnswers": {
+          "answers": [
+            {
+              "value": "Thiago Sampaio"
+            }
+          ]
+        }
+      }
+    }
+  }
+]
+
+var item = responses[Math.floor(Math.random() * responses.length)];
+let name = '';
+let email = '';
+
+console.log(item.answers)
+for (const [_, value] of Object.entries(item.answers)) {
+  console.log(value.textAnswers.answers[0].value)
 }
