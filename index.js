@@ -116,7 +116,6 @@ function handleSignoutClick() {
   if (token !== null) {
     google.accounts.oauth2.revoke(token.access_token)
     gapi.client.setToken('')
-    document.getElementById('content').innerText = ''
     authorizeButton.classList.remove('hidden')
     signoutButton.classList.add('hidden')
     form.classList.add('hidden');
@@ -145,8 +144,8 @@ async function getFormResponsesById(formId) {
     })
     setLoading(false);
   } catch (err) {
-    console.log(err.result.error.message);
-    document.getElementById('content').innerText = err.result.error.message
+
+    addNotification(err.result.error.message, '#be123c');
     setLoading(false);
     return
   }
@@ -163,4 +162,22 @@ function setLoading(loading) {
     submitButton.classList.remove('hidden');
     // document.getElementById('loading_button').innerText = 'Procurar'
   }
+}
+
+/**
+ * Show notification alert.
+ */
+function addNotification(message, colors) {
+  Toastify({
+    text: message,
+    duration: 3000,
+    newWindow: true,
+    close: true,
+    gravity: "top", // `top` or `bottom`
+    position: "right", // `left`, `center` or `right`
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    style: {
+      background: colors,
+    }
+  }).showToast();
 }
