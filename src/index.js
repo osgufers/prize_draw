@@ -1,6 +1,5 @@
 const CLIENT_ID = '1024488896918-2r80k7bvonr8rprf49j3pumdikei5elf.apps.googleusercontent.com'
 const API_KEY = 'AIzaSyBr1hOfL5rt9ed-HjTGKVFNlHvx8J2a5Bs'
-const FORM_ID = '1jnRSY-Rq68zvn6XBCpk0jieH4cGioSGO4jKkyqwN8XM'
 
 // Discovery doc URL for APIs used by the quickstart
 const DISCOVERY_FORM = 'https://forms.googleapis.com/$discovery/rest?version=v1'
@@ -13,8 +12,34 @@ let tokenClient
 let gapiInited = false
 let gisInited = false
 
-document.getElementById('authorize_button').style.visibility = 'hidden'
-document.getElementById('signout_button').style.visibility = 'hidden'
+let authorizeButton = document.getElementById('authorize_button');
+let signoutButton = document.getElementById('signout_button');
+let form = document.getElementById('form');
+let formId = document.getElementById('form-id');
+let loadingButton = document.getElementById('loading_button');
+let submitButton = document.getElementById('submit-form');
+let signinButton = document.getElementById('signin_button');
+
+/** Hidde Elements */
+form.classList.add('hidden');
+signoutButton.classList.add('hidden');
+authorizeButton.classList.add('hidden');
+loadingButton.classList.add('hidden');
+signinButton.classList.add('hidden');
+
+/** Confetti */
+var confettiSettings = {
+  target: 'confetti',
+  animate: false,
+  max: 300,
+  props: ['circle', 'square', 'triangle', 'line'],
+  clock: '10',
+  rotate: false,
+
+  // colors: []
+};
+var confetti = new ConfettiGenerator(confettiSettings);
+// confetti.render();
 
 /**
  * Callback after api.js is loaded.
@@ -54,21 +79,23 @@ function gisLoaded() {
  */
 function maybeEnableButtons() {
   if (gapiInited && gisInited) {
-    document.getElementById('authorize_button').style.visibility = 'visible'
+    authorizeButton.classList.remove('hidden');
+    signinButton.classList.remove('hidden');
   }
 }
 
 /**
- *  Sign in the user upon button click.
+ *  Sign in the user button click.
  */
 function handleAuthClick() {
   tokenClient.callback = async (resp) => {
     if (resp.error !== undefined) {
       throw resp
     }
-    document.getElementById('signout_button').style.visibility = 'visible'
-    document.getElementById('authorize_button').innerText = 'Refresh'
-    await getFormResponses()
+    signoutButton.classList.remove('hidden');
+    authorize_button.classList.add('hidden');
+    form.classList.remove('hidden');
+    signinButton.innerText = 'Refresh';
   }
 
   if (gapi.client.getToken() === null) {
@@ -90,25 +117,50 @@ function handleSignoutClick() {
     google.accounts.oauth2.revoke(token.access_token)
     gapi.client.setToken('')
     document.getElementById('content').innerText = ''
-    document.getElementById('authorize_button').innerText = 'Authorize'
-    document.getElementById('signout_button').style.visibility = 'hidden'
+    authorizeButton.classList.remove('hidden')
+    signoutButton.classList.add('hidden')
+    form.classList.add('hidden');
+    signinButton.innerText = 'Sign-in';
   }
 }
 
 /**
- * Print the names and majors of students in a sample spreadsheet:
- * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+ * Find formID by button click
  */
+function handleSearchFormIdClick() {
+  if (formId.value !== '') {
+    getFormResponsesById(formId.value);
+  }
+}
 
-async function getFormResponses() {
-  let response
+/**
+ * Get form responses.
+ */
+async function getFormResponsesById(formId) {
+  let response;
+  setLoading(true);
   try {
     response = await gapi.client.forms.forms.responses.list({
-      formId: FORM_ID,
+      formId: formId,
     })
+    setLoading(false);
   } catch (err) {
-    document.getElementById('content').innerText = err.message
+    console.log(err.result.error.message);
+    document.getElementById('content').innerText = err.result.error.message
+    setLoading(false);
     return
   }
-  console.log(response)
+  console.log(response.result.responses)
+}
+
+function setLoading(loading) {
+  if (loading) {
+    // document.getElementById('loading_button').innerText = 'Loading...'
+    loadingButton.classList.remove('hidden');
+    submitButton.classList.add('hidden');
+  } else {
+    loadingButton.classList.add('hidden');
+    submitButton.classList.remove('hidden');
+    // document.getElementById('loading_button').innerText = 'Procurar'
+  }
 }
