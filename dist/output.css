@@ -949,6 +949,10 @@ video {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
 
+.bg-\[url\(\'\.\.\/src\/assets\/svg\/confetti2\.svg\'\)\] {
+  background-image: url('../src/assets/svg/confetti2.svg');
+}
+
 .from-rose-500 {
   --tw-gradient-from: #f43f5e;
   --tw-gradient-to: rgb(244 63 94 / 0);
