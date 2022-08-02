@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "tailwind.config.js",
-  "dependencies": {
-    "confetti-js": "^0.0.18"
-  },
   "devDependencies": {
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
