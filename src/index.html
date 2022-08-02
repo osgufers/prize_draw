@@ -12,15 +12,21 @@
 			rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
 	</head>
-	<body class="h-full bg-slate-100 bg-[url('../src/assets/svg/confetti.svg')] bg-center dark:bg-slate-900">
+	<body class="h-full bg-slate-100 bg-[url('../src/assets/svg/confetti.svg')] bg-center dark:bg-dark-900">
 		<!-- Navgation bar -->
-		<nav class="sticky top-0 border-b bg-white px-2 py-3.5 dark:border-slate-800 dark:bg-slate-900 sm:px-4">
+		<nav class="sticky top-0 border-b bg-white px-2 py-3.5 dark:border-dark-800 dark:bg-dark-900 sm:px-4">
 			<div class="container mx-auto flex flex-wrap items-center justify-between">
-				<div class="font-bold text-slate-800 dark:text-slate-50">PRIZE DRAW</div>
+				<div class="flex items-center font-bold text-slate-900 dark:text-dark-50">
+					<div
+						class="mr-2 flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-b from-emerald-500 to-violet-500 text-white">
+						P
+					</div>
+					PRIZE DRAW
+				</div>
 				<ul class="flex items-center space-x-2">
 					<li>
 						<button
-							class="rounded-md p-2 text-slate-400 ring-1 ring-slate-900/5 hover:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:text-slate-600 dark:ring-0 dark:hover:bg-slate-800 dark:hover:text-slate-400 dark:focus-visible:ring-2 dark:focus-visible:ring-slate-500">
+							class="rounded-md p-2 text-slate-400 ring-1 ring-slate-900/5 hover:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 dark:text-dark-300 dark:ring-0 dark:hover:bg-dark-700 dark:hover:text-dark-100 dark:focus-visible:ring-2 dark:focus-visible:ring-slate-500">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								class="h-5 w-5"
@@ -38,7 +44,7 @@
 					<li>
 						<button
 							id="signin_button"
-							class="rounded-md py-1.5 px-2.5 text-sm text-slate-600 dark:text-slate-600 dark:hover:bg-slate-800 dark:hover:text-slate-400"
+							class="rounded-md py-1.5 px-2.5 text-sm text-slate-600 dark:text-dark-300 dark:hover:bg-dark-700 dark:hover:text-dark-100"
 							onclick="handleAuthClick()">
 							Sign-in
 						</button>
@@ -46,7 +52,7 @@
 					<li>
 						<button
 							id="signout_button"
-							class="rounded-md py-1.5 px-2.5 text-sm text-slate-600 dark:text-slate-600 dark:hover:bg-slate-800 dark:hover:text-slate-400"
+							class="rounded-md py-1.5 px-2.5 text-sm text-slate-600 dark:text-dark-300 dark:hover:bg-dark-700 dark:hover:text-dark-100"
 							onclick="handleSignoutClick()">
 							Sign Out
 						</button>
@@ -63,15 +69,14 @@
 		<!-- Header -->
 		<header class="mt-4 px-2 pb-10">
 			<section class="mx-auto flex max-w-screen-lg justify-center">
-				<!-- <canvas class="" id="canvas" width="150" height="150"></canvas> -->
+				<canvas class="" id="drums" width="150" height="150"></canvas>
 			</section>
 			<div class="mx-auto flex-row text-center">
-				<h1 class="bg-gradient-to-r from-violet-500 to-rose-500 bg-clip-text text-7xl font-extrabold text-transparent">
+				<h1 class="bg-gradient-to-b from-emerald-500 to-violet-500 bg-clip-text text-7xl font-extrabold text-transparent">
 					Prize Draw
 				</h1>
 				<span class="text-4xl font-extrabold text-slate-900 dark:text-white">Soteios utilizando Google Forms</span>
-				<p class="mb-4 text-xl text-slate-600 dark:text-slate-400">Você precisa de uma conta do Google e um ID de formulario</p>
-
+				<p class="mb-4 mt-2 text-xl text-slate-600 dark:text-dark-200">Você precisa de uma conta do Google e um ID de formulario</p>
 				<div class="mt-4 flex justify-center space-x-4 text-sm">
 					<!-- Signup  -->
 					<button
@@ -104,7 +109,7 @@
 							<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
 								<svg
 									aria-hidden="true"
-									class="h-5 w-5 text-slate-500 dark:text-slate-500"
+									class="h-5 w-5 text-slate-500 dark:text-dark-300"
 									fill="none"
 									stroke="currentColor"
 									viewBox="0 0 24 24"
@@ -119,20 +124,20 @@
 							<input
 								type="input"
 								id="form-id"
-								class="block w-full rounded-lg border border-none bg-slate-50 py-2.5 px-10 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-slate-800 dark:text-slate-50 dark:placeholder-slate-500"
+								class="block w-full rounded-lg border border-none bg-slate-50 py-2.5 px-10 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-dark-700 dark:text-dark-50 dark:placeholder-dark-300"
 								placeholder="Form ID: 1jnRSY-Rq68zvn6XBCpk0jieH4cGioSGO4jKkyqwN8XM"
 								required />
 							<button
 								type="button"
 								id="submit-form"
 								onclick="handleSearchFormIdClick()"
-								class="right-2.5 bottom-2.5 ml-2 rounded-lg bg-indigo-700 px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
+								class="right-2.5 bottom-2.5 ml-2 rounded-lg bg-primary-700 px-4 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
 								Sortear
 							</button>
 							<button
 								id="loading_button"
 								type="button"
-								class="ml-2 inline-flex items-center rounded-md bg-indigo-700 px-4 py-2 text-sm font-semibold leading-6 text-white hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
+								class="ml-2 inline-flex items-center rounded-md bg-primary-700 px-4 py-2 text-sm font-semibold leading-6 text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
 								disabled="">
 								<svg
 									class="-ml-1 mr-3 h-5 w-5 animate-spin text-white motion-reduce:hidden"
@@ -153,25 +158,25 @@
 			</div>
 		</header>
 
-		<!-- Modal-->
+		<!-- Modal Winner-->
 		<div class="relative z-10" id="modal">
 			<div class="fixed inset-0 bg-slate-900 bg-opacity-75 transition-opacity"></div>
 			<div class="fixed inset-0 z-10 overflow-y-auto">
 				<div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
 					<div
-						class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all dark:bg-slate-700 sm:my-8 sm:w-full sm:max-w-lg">
+						class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all dark:bg-dark-700 sm:my-8 sm:w-full sm:max-w-lg">
 						<div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
 							<div class="sm:flex sm:items-start">
 								<div
 									class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full sm:mx-0 sm:h-10 sm:w-10">
-									<canvas class="" id="canvas" width="100" height="100"></canvas>
+									<canvas class="" id="emoji" width="100" height="100"></canvas>
 								</div>
 								<div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-									<h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-slate-50" id="modal-title">
+									<h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-dark-50" id="modal-title">
 										Parabéns Luciano!
 									</h3>
 									<div class="mt-2">
-										<p class="text-sm text-gray-500 dark:text-slate-400">
+										<p class="text-sm text-gray-500 dark:text-dark-300">
 											Are you sure you want to deactivate your account? All of your data will be permanently removed.
 											This action cannot be undone.
 										</p>
@@ -179,7 +184,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="bg-gray-50 px-4 py-3 dark:bg-slate-800 sm:flex sm:flex-row-reverse sm:px-6">
+						<div class="bg-gray-50 px-4 py-3 dark:bg-dark-800 sm:flex sm:flex-row-reverse sm:px-6">
 							<button
 								type="button"
 								class="inline-flex w-full justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">
@@ -188,7 +193,7 @@
 							<button
 								onclick="handleCloseModal()"
 								type="button"
-								class="mt-3 inline-flex w-full justify-center rounded-md border border-slate-300 bg-white px-4 py-2 text-base font-medium text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:border-slate-700 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+								class="mt-3 inline-flex w-full justify-center rounded-md border border-slate-300 bg-white px-4 py-2 text-base font-medium text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:border-dark-700 dark:bg-dark-700 dark:text-dark-300 dark:hover:bg-dark-600 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
 								Cancel
 							</button>
 						</div>
