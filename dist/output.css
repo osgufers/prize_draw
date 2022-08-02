@@ -919,7 +919,7 @@ video {
 
 .bg-primary-700 {
   --tw-bg-opacity: 1;
-  background-color: rgb(109 40 217 / var(--tw-bg-opacity));
+  background-color: rgb(190 18 60 / var(--tw-bg-opacity));
 }
 
 .bg-slate-900 {
@@ -949,14 +949,14 @@ video {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
 
-.from-emerald-500 {
-  --tw-gradient-from: #10b981;
-  --tw-gradient-to: rgb(16 185 129 / 0);
+.from-rose-500 {
+  --tw-gradient-from: #f43f5e;
+  --tw-gradient-to: rgb(244 63 94 / 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.to-violet-500 {
-  --tw-gradient-to: #8b5cf6;
+.to-pink-600 {
+  --tw-gradient-to: #db2777;
 }
 
 .bg-clip-text {
@@ -1109,9 +1109,14 @@ video {
   line-height: 1.5rem;
 }
 
-.text-slate-800 {
+.text-slate-900 {
   --tw-text-opacity: 1;
-  color: rgb(30 41 59 / var(--tw-text-opacity));
+  color: rgb(15 23 42 / var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .text-slate-400 {
@@ -1126,16 +1131,6 @@ video {
 
 .text-transparent {
   color: transparent;
-}
-
-.text-slate-900 {
-  --tw-text-opacity: 1;
-  color: rgb(15 23 42 / var(--tw-text-opacity));
-}
-
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .text-gray-900 {
@@ -1206,7 +1201,7 @@ video {
 
 .hover\:bg-primary-800:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(91 33 182 / var(--tw-bg-opacity));
+  background-color: rgb(159 18 57 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-green-700:hover {
@@ -1217,11 +1212,6 @@ video {
 .hover\:bg-slate-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(248 250 252 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-indigo-500:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(99 102 241 / var(--tw-bg-opacity));
 }
 
 .hover\:text-slate-500:hover {
@@ -1252,22 +1242,17 @@ video {
 
 .focus\:ring-primary-500:focus {
   --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(139 92 246 / var(--tw-ring-opacity));
+  --tw-ring-color: rgb(244 63 94 / var(--tw-ring-opacity));
 }
 
 .focus\:ring-primary-300:focus {
   --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(196 181 253 / var(--tw-ring-opacity));
+  --tw-ring-color: rgb(253 164 175 / var(--tw-ring-opacity));
 }
 
 .focus\:ring-green-500:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(34 197 94 / var(--tw-ring-opacity));
-}
-
-.focus\:ring-indigo-500:focus {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(99 102 241 / var(--tw-ring-opacity));
 }
 
 .focus\:ring-offset-2:focus {
@@ -1282,7 +1267,7 @@ video {
 
 .focus-visible\:ring-primary-500:focus-visible {
   --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(139 92 246 / var(--tw-ring-opacity));
+  --tw-ring-color: rgb(244 63 94 / var(--tw-ring-opacity));
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1313,7 +1298,7 @@ video {
 
 .dark .dark\:bg-primary-600 {
   --tw-bg-opacity: 1;
-  background-color: rgb(124 58 237 / var(--tw-bg-opacity));
+  background-color: rgb(225 29 72 / var(--tw-bg-opacity));
 }
 
 .dark .dark\:bg-dark-800 {
@@ -1346,11 +1331,6 @@ video {
   color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 
-.dark .dark\:text-dark-400 {
-  --tw-text-opacity: 1;
-  color: rgb(75 71 119 / var(--tw-text-opacity));
-}
-
 .dark .dark\:placeholder-dark-300::-moz-placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(102 101 140 / var(--tw-placeholder-opacity));
@@ -1379,7 +1359,7 @@ video {
 
 .dark .dark\:hover\:bg-primary-700:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(109 40 217 / var(--tw-bg-opacity));
+  background-color: rgb(190 18 60 / var(--tw-bg-opacity));
 }
 
 .dark .dark\:hover\:bg-dark-600:hover {
@@ -1394,12 +1374,7 @@ video {
 
 .dark .dark\:focus\:ring-primary-800:focus {
   --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(91 33 182 / var(--tw-ring-opacity));
-}
-
-.dark .dark\:focus\:ring-indigo-500:focus {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(99 102 241 / var(--tw-ring-opacity));
+  --tw-ring-color: rgb(159 18 57 / var(--tw-ring-opacity));
 }
 
 .dark .dark\:focus-visible\:ring-2:focus-visible {

@@ -13,7 +13,7 @@ module.exports = {
         'bg-confetti': "url('../src/assets/svg/confetti.svg')"
       },
       colors: {
-        primary: colors.violet,
+        primary: colors.rose,
         dark: {
           50: '#e4e4eb',
           100: '#bbbace',
