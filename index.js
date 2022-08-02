@@ -12,6 +12,7 @@ let tokenClient
 let gapiInited = false
 let gisInited = false
 let responses = [];
+var winner = { name: "", email: "" };
 
 /** Components */
 let authorizeButton = document.getElementById('authorize_button');
@@ -85,7 +86,7 @@ function handleAuthClick() {
     signoutButton.classList.remove('hidden');
     authorize_button.classList.add('hidden');
     form.classList.remove('hidden');
-    signinButton.innerText = 'Refresh';
+    signinButton.innerText = 'Atualizar';
   }
 
   if (gapi.client.getToken() === null) {
@@ -165,25 +166,42 @@ function getWinner() {
   modalDrums.classList.remove('hidden');
   modalWinner.classList.add('hidden');
 
+  /** Set participants description */
+  let participants = responses.length > 1 ? 'participantes' : 'participante';
+  document.getElementById('modal-description').innerText = `Nossa IA identificou o total de ${responses.length} ${participants}`;
+
   setTimeout(() => {
     /** Hide/Show Modals */
     modalDrums.classList.add('hidden');
     modalWinner.classList.remove('hidden');
     /** Show Cofetti */
     showConfetti();
-  }, 5000); // 5 seconds
+  }, 6000); // 5 seconds
 
-  var item = responses[Math.floor(Math.random() * responses.length)];
-  let name = 'Parabéns Lucas Cardoso!';
-  let email = '';
 
-  console.log(item.answers)
-  for (const [_, value] of Object.entries(item.answers)) {
-    console.log(value.textAnswers.answers[0].value)
+  setTimeout(() => {
+    document.getElementById('modal-description').innerText = 'Estamos quase lá...';
+  }, 3000); // 2 seconds
+
+  let answer = responses[Math.floor(Math.random() * responses.length)];
+  let winnerAnswers = [];
+
+  for (const [_, value] of Object.entries(answer.answers)) {
+    winnerAnswers.push(value.textAnswers.answers[0].value);
   }
 
-  document.getElementById('winner-name').innerText = name;
+  winner.email = winnerAnswers[0];
+  winner.name = winnerAnswers[1];
 
+  let email = censorEmail(winner.email);
+
+  document.getElementById('winner-name').innerText = `Parabéns ${winner.name}!`;
+  document.getElementById('winner-email').innerHTML = `Entraremos em contato através do endereço de email:
+    <a class="cursor-pointer text-primary-500" alt="copy" id="copy-email">${email}</a>
+    para mais instruções sobre seu prmeio.
+  `;
+
+  document.getElementById('copy-email').addEventListener("click", copyWinnerEmail)
 }
 
 /**
@@ -207,4 +225,20 @@ function addNotification(message, background) {
 /** Close Modal */
 function handleCloseModal() {
   modalWinner.classList.add('hidden');
+}
+
+/** Hide Email address */
+function censorEmail(email) {
+  let arr = email.split("@");
+  return censorWord(arr[0]) + "@" + censorWord(arr[1]);
+}
+
+/** Hide String */
+function censorWord(str) {
+  return str[0] + "*".repeat(str.length - 2) + str.slice(-1);
+}
+
+function copyWinnerEmail() {
+  navigator.clipboard.writeText(winner.email);
+  addNotification("Email copiado para a área de transferência!", "linear-gradient(to right, #4ade80, #38bdf8)");
 }
