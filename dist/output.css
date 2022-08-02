@@ -666,6 +666,26 @@ video {
   bottom: 0.5rem;
 }
 
+.bottom-3 {
+  bottom: 0.75rem;
+}
+
+.bottom-10 {
+  bottom: 2.5rem;
+}
+
+.bottom-20 {
+  bottom: 5rem;
+}
+
+.bottom-32 {
+  bottom: 8rem;
+}
+
+.bottom-28 {
+  bottom: 7rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -757,6 +777,14 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-80 {
+  height: 20rem;
+}
+
+.h-56 {
+  height: 14rem;
 }
 
 .min-h-full {
@@ -951,6 +979,18 @@ video {
 
 .bg-\[url\(\'\.\.\/src\/assets\/svg\/confetti2\.svg\'\)\] {
   background-image: url('../src/assets/svg/confetti2.svg');
+}
+
+.bg-\[url\(\'\.\/assets\/svg\/prize\.svg\'\)\] {
+  background-image: url('./assets/svg/prize.svg');
+}
+
+.bg-\[url\(\'\.\/src\/assets\/svg\/prize\.svg\'\)\] {
+  background-image: url('./src/assets/svg/prize.svg');
+}
+
+.bg-\[url\(\'\.\.\/src\/assets\/svg\/prize\.svg\'\)\] {
+  background-image: url('../src/assets/svg/prize.svg');
 }
 
 .from-rose-500 {
