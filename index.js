@@ -147,7 +147,7 @@ async function getFormResponsesById(formId) {
     setLoading(false);
   } catch (err) {
 
-    addNotification(err.result.error.message, '#be123c');
+    addNotification(err.result.error.message, "linear-gradient(to right, #f43f5e, #db2777)");
     setLoading(false);
     return
   }
