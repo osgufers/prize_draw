@@ -9,9 +9,6 @@ module.exports = {
       fontFamily: {
         poppins: ['Poppins', 'system-ui', 'sans-serif']
       },
-      backgroundImage: {
-        'bg-confetti': "url('../src/assets/svg/confetti.svg')"
-      },
       colors: {
         primary: colors.rose,
         dark: {
