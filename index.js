@@ -55,12 +55,16 @@ function gapiLoaded() {
  * discovery doc to initialize the API.
  */
 async function intializeGapiClient() {
-  await gapi.client.init({
-    apiKey: API_KEY,
-    discoveryDocs: [DISCOVERY_FORM],
-  })
-  gapiInited = true
-  maybeEnableButtons()
+  try {
+    await gapi.client.init({
+      apiKey: API_KEY,
+      discoveryDocs: [DISCOVERY_FORM],
+    })
+    gapiInited = true
+    maybeEnableButtons()
+  } catch (err) {
+    addNotification(err.error.message, "linear-gradient(to right, #f43f5e, #db2777)");
+  }
 }
 
 /**
