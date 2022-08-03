@@ -25,12 +25,23 @@ let signinButton = document.getElementById('signin_button');
 let modalWinner = document.getElementById('modal-winner');
 let modalDrums = document.getElementById('modal-drums');
 
-/** Hidde Elements */
-form.classList.add('hidden');
-signoutButton.classList.add('hidden');
-authorizeButton.classList.add('hidden');
-loadingButton.classList.add('hidden');
-signinButton.classList.add('hidden');
+const themeButton = document.getElementById("theme-toggle");
+const html = document.querySelector("html");
+
+/** On Init */
+(function init() {
+
+  loadingButton.classList.add('hidden');
+
+  themeButton.addEventListener("click", toggleTheme);
+  if (localStorage.getItem("theme") === "dark") {
+    html.classList.add("dark");
+  }
+  /** Set icon theme */
+  changeThemeButtonIcon();
+
+})();
+
 
 /**
  * Callback after api.js is loaded.
@@ -145,15 +156,16 @@ async function getFormResponsesById(formId) {
   getWinner();
 }
 
+/**
+ * Set loading state
+ */
 function setLoading(loading) {
   if (loading) {
-    // document.getElementById('loading_button').innerText = 'Loading...'
     loadingButton.classList.remove('hidden');
     submitButton.classList.add('hidden');
   } else {
     loadingButton.classList.add('hidden');
     submitButton.classList.remove('hidden');
-    // document.getElementById('loading_button').innerText = 'Procurar'
   }
 }
 
@@ -177,7 +189,6 @@ function getWinner() {
     /** Show Cofetti */
     showConfetti();
   }, 6000); // 5 seconds
-
 
   setTimeout(() => {
     document.getElementById('modal-description').innerText = 'Estamos quase lá...';
@@ -205,6 +216,40 @@ function getWinner() {
 }
 
 /**
+ * Change Theme
+ */
+function toggleTheme() {
+  if (localStorage.getItem("theme") === "dark") {
+    localStorage.setItem("theme", "light");
+    themeButton.innerText = "Enable"
+  } else {
+    localStorage.setItem("theme", "dark");
+    themeButton.innerText = "Disable"
+  }
+  html.classList.toggle("dark");
+  changeThemeButtonIcon();
+}
+
+/**
+ * Change Theme Button Icon
+ */
+function changeThemeButtonIcon() {
+  if (localStorage.getItem("theme") === "dark") {
+    themeButton.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+    </svg>
+    `
+  } else {
+    themeButton.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>
+    `
+  }
+}
+
+/**
  * Show notification alert.
  */
 function addNotification(message, background) {
@@ -222,23 +267,32 @@ function addNotification(message, background) {
   }).showToast();
 }
 
-/** Close Modal */
+/**
+ * Close modal
+ */
 function handleCloseModal() {
   modalWinner.classList.add('hidden');
 }
 
-/** Hide Email address */
+/**
+ * Censor email address
+ */
 function censorEmail(email) {
   let arr = email.split("@");
   return censorWord(arr[0]) + "@" + censorWord(arr[1]);
 }
 
-/** Hide String */
+/**
+ * Censor word
+ */
 function censorWord(str) {
   return str[0] + "*".repeat(str.length - 2) + str.slice(-1);
 }
 
+/**
+ * Copy winner email
+ */
 function copyWinnerEmail() {
   navigator.clipboard.writeText(winner.email);
-  addNotification("Email copiado para a área de transferência!", "linear-gradient(to right, #4ade80, #38bdf8)");
+  addNotification("Endereço de Email copiado!", "linear-gradient(to right, #4ade80, #38bdf8)");
 }
