@@ -11,7 +11,8 @@
   },
   "scripts": {
     "dev": "live-server",
-    "tailwind": "npx tailwindcss -i ./src/css/input.css -o ./dist/output.css --watch",
+    "tailwind": "npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch",
+    "tailwind-deploy": "npx tailwindcss -o ./src/css/build.css --minify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

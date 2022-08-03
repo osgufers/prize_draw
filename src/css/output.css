@@ -743,10 +743,6 @@ video {
   height: 1.75rem;
 }
 
-.h-5 {
-  height: 1.25rem;
-}
-
 .h-8 {
   height: 2rem;
 }
@@ -759,12 +755,12 @@ video {
   height: 1rem;
 }
 
-.h-12 {
-  height: 3rem;
+.h-5 {
+  height: 1.25rem;
 }
 
-.h-6 {
-  height: 1.5rem;
+.h-12 {
+  height: 3rem;
 }
 
 .min-h-full {
@@ -775,10 +771,6 @@ video {
   width: 1.75rem;
 }
 
-.w-5 {
-  width: 1.25rem;
-}
-
 .w-8 {
   width: 2rem;
 }
@@ -787,16 +779,16 @@ video {
   width: 1rem;
 }
 
+.w-5 {
+  width: 1.25rem;
+}
+
 .w-full {
   width: 100%;
 }
 
 .w-12 {
   width: 3rem;
-}
-
-.w-6 {
-  width: 1.5rem;
 }
 
 .max-w-screen-lg {
@@ -956,6 +948,14 @@ video {
 
 .bg-gradient-to-b {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+
+.bg-\[url\(\'\.\/assets\/svg\/confetti\.svg\'\)\] {
+  background-image: url('./assets/svg/confetti.svg');
+}
+
+.bg-\[url\(\'\.\.\/assets\/svg\/confetti\.svg\'\)\] {
+  background-image: url('../assets/svg/confetti.svg');
 }
 
 .from-rose-500 {
