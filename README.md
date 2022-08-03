@@ -18,7 +18,7 @@
 ![Screenshot - Prize Draw](src/assets/images/preview.png)
 
 ### Demo
-See [Demo](https://github.com/osgufers/prize_draw) page.
+See [Demo](https://osgufers.github.io/prize_draw) page.
 
 #### Getting Started
 To run the app, first make sure that you have live-server installed
