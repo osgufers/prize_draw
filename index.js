@@ -158,6 +158,16 @@ async function getFormResponsesById(formId) {
     return
   }
 
+  /**
+   * Check if form dont have responses
+   */
+  if (Object.keys(response.result).length === 0) {
+    addNotification("Nenhuma resposta encontrada", "linear-gradient(to right, #f43f5e, #db2777)");
+    setLoading(false);
+    modalDrums.classList.add('hidden');
+    return
+  }
+
   responses = response.result.responses
   getWinner();
 }
