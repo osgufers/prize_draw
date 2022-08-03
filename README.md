@@ -14,10 +14,16 @@
     </a>
 </p>
 
+### Screenshots
+![Screenshot - Prize Draw](src/assets/images/preview.png)
 
-<p>
-  <img alt="Preview" src="src/assets/images/preview.png">
-</p>
+#### Getting Started
+To run the app, first make sure that you have live-server installed
+`npm install -g live-server` 
+execute `npm run dev` and `npm run tailwind`
+
+#### Deploy on Github Pages
+`git subtree push --prefix src origin gh-pages`
 
 
 #### Disclaimer
