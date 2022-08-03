@@ -82,6 +82,7 @@ function gisLoaded() {
 function maybeEnableButtons() {
   if (gapiInited && gisInited) {
     authorizeButton.classList.remove('hidden');
+    authorizeButton.classList.add('inline-flex');
     signinButton.classList.remove('hidden');
   }
 }
@@ -119,6 +120,7 @@ function handleSignoutClick() {
     google.accounts.oauth2.revoke(token.access_token)
     gapi.client.setToken('')
     authorizeButton.classList.remove('hidden')
+    authorizeButton.classList.add('inline-flex')
     signoutButton.classList.add('hidden')
     form.classList.add('hidden');
     signinButton.innerText = 'Sign-in';
@@ -162,9 +164,11 @@ async function getFormResponsesById(formId) {
 function setLoading(loading) {
   if (loading) {
     loadingButton.classList.remove('hidden');
+    loadingButton.classList.add('inline-flex');
     submitButton.classList.add('hidden');
   } else {
     loadingButton.classList.add('hidden');
+    loadingButton.classList.remove('inline-flex');
     submitButton.classList.remove('hidden');
   }
 }
