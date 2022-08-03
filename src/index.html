@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark font-poppins">
+<html class="font-poppins">
 	<head>
 		<title>Prize Draw</title>
 		<meta charset="UTF-8" />
@@ -26,25 +26,13 @@
 				<ul class="flex items-center space-x-2">
 					<li>
 						<button
-							class="rounded-md p-2 text-slate-400 ring-1 ring-slate-900/5 hover:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 dark:text-dark-300 dark:ring-0 dark:hover:bg-dark-700 dark:hover:text-dark-100 dark:focus-visible:ring-2 dark:focus-visible:ring-slate-500">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								class="h-5 w-5"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-								stroke-width="2">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-							</svg>
-						</button>
+							id="theme-toggle"
+							class="rounded-md p-2 text-slate-400 ring-1 ring-slate-900/5 hover:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 dark:text-dark-300 dark:ring-0 dark:hover:bg-dark-700 dark:hover:text-dark-100 dark:focus-visible:ring-2 dark:focus-visible:ring-slate-500"></button>
 					</li>
 					<li>
 						<button
 							id="signin_button"
-							class="rounded-md py-1.5 px-2.5 text-sm text-slate-600 dark:text-dark-300 dark:hover:bg-dark-700 dark:hover:text-dark-100"
+							class="hidden rounded-md py-1.5 px-2.5 text-sm text-slate-600 dark:text-dark-300 dark:hover:bg-dark-700 dark:hover:text-dark-100"
 							onclick="handleAuthClick()">
 							Entrar
 						</button>
@@ -52,7 +40,7 @@
 					<li>
 						<button
 							id="signout_button"
-							class="rounded-md py-1.5 px-2.5 text-sm text-slate-600 dark:text-dark-300 dark:hover:bg-dark-700 dark:hover:text-dark-100"
+							class="hidden rounded-md py-1.5 px-2.5 text-sm text-slate-600 dark:text-dark-300 dark:hover:bg-dark-700 dark:hover:text-dark-100"
 							onclick="handleSignoutClick()">
 							Sair
 						</button>
@@ -85,7 +73,7 @@
 						id="authorize_button"
 						onclick="handleAuthClick()"
 						type="button"
-						class="dark:focus:ring-[#4285F4]/55 mr-2 mb-2 inline-flex items-center rounded-lg bg-[#4285F4] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#4285F4]/90 focus:outline-none focus:ring-4 focus:ring-[#4285F4]/50">
+						class="dark:focus:ring-[#4285F4]/55 mr-2 mb-2 inline-flex hidden items-center rounded-lg bg-[#4285F4] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#4285F4]/90 focus:outline-none focus:ring-4 focus:ring-[#4285F4]/50">
 						<svg
 							class="mr-2 -ml-1 h-4 w-4"
 							aria-hidden="true"
@@ -102,7 +90,7 @@
 						Faça login no Google
 					</button>
 					<!-- Form -->
-					<form id="form">
+					<form id="form" class="hidden">
 						<label for="default-search" class="sr-only mb-2 text-sm font-medium text-slate-900 dark:text-slate-300">
 							Form ID
 						</label>
