@@ -3,7 +3,7 @@
 	<head>
 		<title>Prize Draw</title>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 		<link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png" />
 		<link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png" />
 		<link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png" />
@@ -112,10 +112,11 @@
 							Form ID
 						</label>
 						<div class="relative flex">
-							<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+							<div
+								class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400 dark:text-dark-300">
 								<svg
 									aria-hidden="true"
-									class="h-5 w-5 text-slate-500 dark:text-dark-300"
+									class="h-5 w-5"
 									fill="none"
 									stroke="currentColor"
 									viewBox="0 0 24 24"
@@ -163,6 +164,24 @@
 				</div>
 			</div>
 		</header>
+
+		<!-- Winner Table -->
+		<table class="bg-border-b-2 hidden w-full">
+			<thead class="border-slate-100 bg-white">
+				<tr>
+					<th class="p-3 text-left text-sm font-semibold tracking-wide">No.</th>
+					<th class="p-3 text-left text-sm font-semibold tracking-wide">Name.</th>
+					<th class="p-3 text-left text-sm font-semibold tracking-wide">Email.</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="p-3 text-sm text-slate-700">1</td>
+					<td class="p-3 text-sm text-slate-700">John Doe</td>
+					<td class="p-3 text-sm text-slate-700">John@gmail.com</td>
+				</tr>
+			</tbody>
+		</table>
 
 		<!-- Footer -->
 		<footer class="fixed bottom-0 mx-auto my-5 w-full items-center text-center md:flex md:justify-center md:p-6">

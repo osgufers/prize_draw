@@ -12,7 +12,8 @@ let tokenClient
 let gapiInited = false
 let gisInited = false
 let responses = [];
-var winner = { name: "", email: "" };
+let winner = { name: "", email: "" };
+let winners = [];
 
 /** Components */
 let authorizeButton = document.getElementById('authorize_button');
@@ -144,6 +145,10 @@ function handleSearchFormIdClick() {
  * Get form responses.
  */
 async function getFormResponsesById(formId) {
+
+  /** Reset Values */
+  resetValues();
+
   let response;
   setLoading(true);
   try {
@@ -201,27 +206,31 @@ function getWinner() {
   document.getElementById('modal-description').innerText = `Nossa IA identificou o total de ${responses.length} ${participants}`;
 
   setTimeout(() => {
-    /** Hide/Show Modals */
-    modalDrums.classList.add('hidden');
-    modalWinner.classList.remove('hidden');
-    /** Show Cofetti */
-    showConfetti();
-  }, 6000); // 5 seconds
-
-  setTimeout(() => {
     document.getElementById('modal-description').innerText = 'Estamos quase lá...';
   }, 3000); // 2 seconds
 
-  let answer = responses[Math.floor(Math.random() * responses.length)];
-  let winnerAnswers = [];
+  verifyWinner();
 
-  for (const [_, value] of Object.entries(answer.answers)) {
-    winnerAnswers.push(value.textAnswers.answers[0].value);
+}
+
+async function verifyWinner() {
+
+  winner = await getRandomWinner();
+
+  if (responses.length === winners.length) {
+    addNotification("Todos os candidados foram sorteados!", "linear-gradient(to right, #4ade80, #38bdf8)");
+    modalDrums.classList.add('hidden');
+    return;
   }
 
-  winner.email = winnerAnswers[0];
-  winner.name = winnerAnswers[1];
+  const hasWinner = winners.some(item => item.email === winner.email);
+  if (hasWinner) {
+    return verifyWinner();
+  }
 
+  winners.push(winner);
+
+  /** Hide email to display */
   let email = censorEmail(winner.email);
 
   document.getElementById('winner-name').innerText = `Parabéns ${winner.name}!`;
@@ -231,6 +240,45 @@ function getWinner() {
   `;
 
   document.getElementById('copy-email').addEventListener("click", copyWinnerEmail)
+
+  setTimeout(() => {
+    /** Hide/Show Modals */
+    modalDrums.classList.add('hidden');
+    modalWinner.classList.remove('hidden');
+    /** Show Cofetti */
+    showConfetti();
+  }, 6000); // 5 seconds
+}
+
+/**
+ * get a random winner
+ */
+async function getRandomWinner() {
+  let answer = responses[Math.floor(Math.random() * responses.length)];
+  let winnerAnswers = [];
+  let winner = {};
+
+  for (const [_, value] of Object.entries(answer.answers)) {
+    winnerAnswers.push(value.textAnswers.answers[0].value);
+  }
+
+  /** Define winner information*/
+  winnerAnswers.map(item => {
+    if (item.includes('@')) {
+      winner.email = item;
+    } else {
+      winner.name = item;
+    }
+  });
+
+  return winner;
+
+}
+
+function resetValues() {
+  winners = [];
+  winner = { name: "", email: "" };
+  responses = [];
 }
 
 /**
