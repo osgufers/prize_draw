@@ -25,6 +25,7 @@ let submitButton = document.getElementById('submit-form');
 let signinButton = document.getElementById('signin_button');
 let modalWinner = document.getElementById('modal-winner');
 let modalDrums = document.getElementById('modal-drums');
+let winnerTable = document.getElementById('winner-table');
 
 const themeButton = document.getElementById("theme-toggle");
 const html = document.querySelector("html");
@@ -220,6 +221,7 @@ async function verifyWinner() {
   if (responses.length === winners.length) {
     addNotification("Todos os candidados foram sorteados!", "linear-gradient(to right, #4ade80, #38bdf8)");
     modalDrums.classList.add('hidden');
+    renderTable();
     return;
   }
 
@@ -279,6 +281,8 @@ function resetValues() {
   winners = [];
   winner = { name: "", email: "" };
   responses = [];
+  winnerTable.classList.add('hidden');
+  winnerTable.classList.remove('flex');
 }
 
 /**
@@ -316,6 +320,28 @@ function changeThemeButtonIcon() {
 }
 
 /**
+ * Render winner table
+ */
+function renderTable() {
+  winnerTable.classList.remove('hidden');
+  winnerTable.classList.add('flex');
+  document.getElementById('total-winners').innerText = `Total de ${winners.length} ${winners.length > 1 ? 'premiados' : 'premiado'}`;
+  let table = document.getElementById('winner-table-body');
+  table.innerHTML = '';
+  winners.map((item, index) => {
+    index++;
+    index = String(index).padStart(2, '0');
+    table.innerHTML += `
+    <tr class="odd:bg-white even:bg-slate-50 dark:odd:bg-dark-700 dark:even:bg-dark-600">
+      <td class="whitespace-nowrap p-3 text-center text-sm text-slate-700 dark:text-dark-200">${index}</td>
+      <td class="whitespace-nowrap p-3 text-sm text-slate-700 dark:text-dark-200">${item.name}</td>
+      <td class="whitespace-nowrap p-3 text-sm text-slate-700 dark:text-dark-200">${censorEmail(item.email)}</td>
+    </tr>
+    `
+  });
+}
+
+/**
  * Show notification alert.
  */
 function addNotification(message, background) {
@@ -338,6 +364,9 @@ function addNotification(message, background) {
  */
 function handleCloseModal() {
   modalWinner.classList.add('hidden');
+  if (winners.length > 0) {
+    renderTable();
+  }
 }
 
 /**
@@ -361,4 +390,31 @@ function censorWord(str) {
 function copyWinnerEmail() {
   navigator.clipboard.writeText(winner.email);
   addNotification("Endereço de Email copiado!", "linear-gradient(to right, #4ade80, #38bdf8)");
+}
+
+/** Export Winners */
+function exportWinnersToCSV() {
+  /** Convert array object do csv string */
+  const csv = [
+    ["Nome", "Email"],
+    ...winners.map(item => [
+      item.name,
+      item.email
+    ])
+  ]
+    .map(e => e.join(","))
+    .join("\n");
+
+  /** Create a blob of the csv string */
+  const blob = new Blob([csv], { type: "text/csv" });
+  /** Create a link to the blob */
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = `lista de Ganhadores.csv`;
+  /** Append the link to the DOM */
+  document.body.appendChild(link);
+  /** Click the link to trigger the download */
+  link.click();
+  /** Clean up the DOM */
+  document.body.removeChild(link);
 }
