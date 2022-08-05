@@ -228,6 +228,12 @@ async function verifyWinner() {
     return;
   }
 
+  if (winner.email === undefined) {
+    addNotification("Não foi possível identificar o vencedor, verifique o formulario.", "linear-gradient(to right, #f43f5e, #db2777)");
+    modalDrums.classList.add('hidden');
+    return;
+  }
+
   const hasWinner = winners.some(item => item.email === winner.email);
   if (hasWinner) {
     return verifyWinner();
@@ -269,7 +275,7 @@ async function getRandomWinner() {
 
   /** Define winner information*/
   winnerAnswers.map(item => {
-    if (item.includes('@')) {
+    if (validateEmail(item)) {
       winner.email = item;
     } else {
       winner.name = item;
@@ -287,6 +293,15 @@ function resetValues() {
   winnerTable.classList.add('hidden');
   winnerTable.classList.remove('flex');
 }
+
+/** Valid email address */
+const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
 
 /**
  * Change Theme
