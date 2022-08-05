@@ -26,7 +26,7 @@ To run the app, first make sure that you have live-server installed
 execute `npm run dev` and `npm run tailwind`
 
 #### How to create a google form that works with the app
-The simplest way to start building a form is right from the Google Forms app. Go to docs.google.com/forms, then either choose a template or start a blank form.
+The simplest way to start building a form is right from the Google Forms app. Go to docs.google.com/forms, then start a blank form.
 1. Create two fields `Name` and `Email` with short answer option.
 2. on the bottom of name field, click on three vertical dots button to create a answer validation.
     1. select `lenght`
