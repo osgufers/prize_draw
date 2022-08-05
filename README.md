@@ -25,6 +25,25 @@ To run the app, first make sure that you have live-server installed
 `npm install -g live-server` 
 execute `npm run dev` and `npm run tailwind`
 
+#### How to create a google form that works with the app
+The simplest way to start building a form is right from the Google Forms app. Go to docs.google.com/forms, then either choose a template or start a blank form.
+1. Create two fields `Name` and `Email` with short answer option.
+2. on the bottom of name field, click on three vertical dots button to create a answer validation.
+    1. Select `lenght`
+    2. select `maximum number of characters` 
+    3. set the value with `3`
+    4. set a custom message.
+3. on the bottom of email field, click on three vertical dots button to create a answer validation.
+    1. select `regular expression`
+    2. select `contains`
+    3. set this value `[a-zA-Z0-9_\.\+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-\.]+`
+    4. set a custom message
+4. See this [example](https://docs.google.com/forms/d/e/1FAIpQLSfCMgP4-UVdcAMrN41yg8ihx4hIJ3eTreiuDFgy68mGL1qseA/viewform)
+
+#### What's a form ID ?
+`docs.google.com/forms/d/e/`<span style="color:red">1FAIpQLSfCMgP4-UVdcAMrN41yg8ihx4hIJ3eTreiuDFgy68mGL1qseA<span>`/viewform`
+
+See more here: https://stackoverflow.com/questions/62138139/how-to-find-google-form-id
 #### Deploy on Github Pages
 `git subtree push --prefix src origin gh-pages`
 
