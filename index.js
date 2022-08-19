@@ -1,8 +1,8 @@
-// const CLIENT_ID = '465837555821-8kfhmd6nuqi2op58b8fndmvocs9s8db7.apps.googleusercontent.com'
-// const API_KEY = 'AIzaSyBbL1QE11IYguFm-p32YdAaUH8jOpAFjSo'
+const CLIENT_ID = '465837555821-8kfhmd6nuqi2op58b8fndmvocs9s8db7.apps.googleusercontent.com'
+const API_KEY = 'AIzaSyBbL1QE11IYguFm-p32YdAaUH8jOpAFjSo'
 /** For local tests */
-const CLIENT_ID = '1024488896918-2r80k7bvonr8rprf49j3pumdikei5elf.apps.googleusercontent.com'
-const API_KEY = 'AIzaSyBr1hOfL5rt9ed-HjTGKVFNlHvx8J2a5Bs'
+// const CLIENT_ID = '1024488896918-2r80k7bvonr8rprf49j3pumdikei5elf.apps.googleusercontent.com'
+// const API_KEY = 'AIzaSyBr1hOfL5rt9ed-HjTGKVFNlHvx8J2a5Bs'
 
 // Discovery doc URL for APIs used by the quickstart
 const DISCOVERY_FORM = 'https://forms.googleapis.com/$discovery/rest?version=v1'
