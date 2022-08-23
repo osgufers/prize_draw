@@ -49,7 +49,7 @@ Read more about: https://stackoverflow.com/questions/62138139/how-to-find-google
 `git subtree push --prefix src origin gh-pages`
 
 #### Thanks
-<a href="https://www.jetbrains.com/?from=thingTalk"><img src="src/assets/images/jetbrains.png" height="120" alt="JetBrains"/></a>
+<a href="https://www.jetbrains.com/?from=gufers"><img src="src/assets/images/jetbrains.png" height="120" alt="JetBrains"/></a>
 
 #### Disclaimer
 The Google name and logos are trademarks of Google.
