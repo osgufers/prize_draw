@@ -30,7 +30,7 @@ The simplest way to start building a form is right from the Google Forms app. Go
 1. Create two fields `Name` and `Email` with short answer option.
 2. on the bottom of name field, click on three vertical dots button to create a answer validation.
     1. select `lenght`
-    2. select `maximum number of characters` 
+    2. select `minimum number of characters` 
     3. set the value with `3`
     4. set a custom message.
 3. on the bottom of email field, click on three vertical dots button to create a answer validation.
